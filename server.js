@@ -1,7 +1,9 @@
 var express = require("express"),
+    cors = require("cors"),
     oAuth2Server = require("./security/oAuth2Server");
-var server = express();
 
+var server = express();
+server.use(cors());
 server.use(oAuth2Server);
 
 var articles = require("./articles/articlesApi");

@@ -6,12 +6,12 @@ module.exports = function(){
 
     var listArticlesConfig = {
         connectionString: connectionString,
-        source: "select top 10 Id, Name from articles"
+        source: "select top 10 id, name from articles"
     };
 
     var getArticleDetailsConfig = {
         connectionString: connectionString,
-        source: "select * from articles where id = convert(uniqueidentifier, @id)"
+        source: "select id, name, code, description, imageUrl from articles where id = convert(uniqueidentifier, @id)"
     };
 
     return{

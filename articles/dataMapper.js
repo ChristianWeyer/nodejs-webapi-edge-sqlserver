@@ -15,11 +15,11 @@ module.exports = function () {
             return callback(collection);
         },
         mapArticle: function (data, callback) {
-            var a = new Article(data.Id, data.Name);
+            var a = new Article(data.id, data.name);
             return callback(a);
         },
         mapArticleDetails: function (data, callback) {
-            var a = new ArticleDetails(data.Id, data.Name, data.Code, data.Description, data.ImageUrl);
+            var a = new ArticleDetails(data.id, data.name, data.code, data.description, data.imageUrl);
             return callback(a);
         }
     }

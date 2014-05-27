@@ -6,7 +6,7 @@ var fs = require("fs"),
 
 var server = express();
 server.use(cors());
-server.use(oAuth2Server);
+//server.use(oAuth2Server);
 
 var articles = require("./articles/articlesApi");
 server.use("/api/articles", articles);

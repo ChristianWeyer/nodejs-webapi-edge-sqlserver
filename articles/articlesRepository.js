@@ -14,7 +14,17 @@ module.exports = function(){
     };
 
     return{
-        listArticles: edge.func("sql", listArticlesConfig),
-        getArticleDetails: edge.func("sql", getArticleDetailsConfig)
+        listArticles: function(callback){
+            edge.func("sql", listArticlesConfig)(null, function(error, result){
+                if(error) return callback(error, null);
+                return callback(null, result);
+            });
+        },
+        getArticleDetails: function(id, callback){
+            edge.func("sql", getArticleDetailsConfig)({ id: id }, function(error, result){
+                if(error) return callback(error, null);
+                return callback(null, result);
+            });
+        }
     };
 }

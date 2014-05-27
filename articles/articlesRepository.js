@@ -6,7 +6,7 @@ module.exports = function(){
 
     var listArticlesConfig = {
         connectionString: connectionString,
-        source: "select top 10 id, name from articles"
+        source: "select top 10 Id, Name from articles"
     };
 
     var getArticleDetailsConfig = {
@@ -35,7 +35,7 @@ module.exports = function(){
                 if(error) {
                     deferred.reject(error);
                 } else {
-                    deferred.resolve(result);
+                    deferred.resolve(result[0]);
                 }
             });
 

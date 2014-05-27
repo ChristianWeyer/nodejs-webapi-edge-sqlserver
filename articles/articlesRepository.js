@@ -1,4 +1,5 @@
-var edge = require("edge");
+var edge = require("edge"),
+    q = require("q");
 
 module.exports = function(){
     var connectionString = "server=.;database=productsdemo;integrated security=true";
@@ -14,17 +15,31 @@ module.exports = function(){
     };
 
     return{
-        listArticles: function(callback){
+        listArticles: function(){
+            var deferred = q.defer();
+
             edge.func("sql", listArticlesConfig)(null, function(error, result){
-                if(error) return callback(error, null);
-                return callback(null, result);
+                if(error) {
+                    deferred.reject(error);
+                } else {
+                    deferred.resolve(result);
+                }
             });
+
+            return deferred.promise;
         },
-        getArticleDetails: function(id, callback){
+        getArticleDetails: function(id){
+            var deferred = q.defer();
+
             edge.func("sql", getArticleDetailsConfig)({ id: id }, function(error, result){
-                if(error) return callback(error, null);
-                return callback(null, result);
+                if(error) {
+                    deferred.reject(error);
+                } else {
+                    deferred.resolve(result);
+                }
             });
+
+            return deferred.promise;
         }
     };
 }

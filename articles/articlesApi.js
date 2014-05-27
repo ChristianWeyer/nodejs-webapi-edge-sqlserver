@@ -1,23 +1,27 @@
-var express = require("express");
+var express = require("express"),
+    q = require("q");
+
 var router = express.Router();
 
 var ArticlesRepository = require("./articlesRepository");
 var articlesRepository = new ArticlesRepository();
 
-router.get("/", function(req, res) {
-    // TODO: clean API into repository with promises
-    articlesRepository.listArticles(function(error, articles) {
-        if(error) throw error;
-        res.json(articles);
-    });
+router.get("/", function (req, res) {
+    articlesRepository.listArticles().then(
+        function (articles) {
+            res.json(articles);
+        }, function (error) {
+            throw error;
+        });
 });
 
-router.get("/:id", function(req, res) {
-    // TODO: clean API into repository with promises
-    articlesRepository.getArticleDetails(req.params.id, function(error, articleDetails) {
-        if(error) throw error;
-        res.json(articleDetails);
-    });
+router.get("/:id", function (req, res) {
+    articlesRepository.getArticleDetails(req.params.id).then(
+        function (articleDetails) {
+            res.json(articleDetails);
+        }, function (error) {
+            throw error;
+        });
 });
 
 module.exports = router;

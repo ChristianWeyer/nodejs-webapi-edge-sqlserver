@@ -1,7 +1,7 @@
 var edge = require("edge"),
     q = require("q");
 
-module.exports = function () {
+var repository = function () {
     var connectionString = "server=.;database=productsdemo;integrated security=true";
 
     return{
@@ -38,4 +38,6 @@ module.exports = function () {
             return deferred.promise;
         }
     };
-}
+};
+
+module.exports = repository;

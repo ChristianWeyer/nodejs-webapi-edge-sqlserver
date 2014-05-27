@@ -3,7 +3,7 @@ var _ = require("underscore");
 var Article = require("./article"),
     ArticleDetails = require("./articleDetails");
 
-module.exports = function () {
+var mapper = function () {
     return{
         mapCollection: function (data, fn, callback) {
             var collection = [];
@@ -23,4 +23,6 @@ module.exports = function () {
             return callback(a);
         }
     }
-}
+};
+
+module.exports = mapper;

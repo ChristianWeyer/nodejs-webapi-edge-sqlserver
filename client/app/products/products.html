@@ -16,7 +16,7 @@
                         </thead>
                         <tbody>
                             <tr ng-repeat="p in products" ng-click="loadDetails(p)">
-                                <td>{{ p.Title }}</td>
+                                <td>{{ p.name }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -24,7 +24,7 @@
             </div>
         </div>
         
-        <div>
+        <div ng-if="false">
             <input class="form-control" type="text" ng-model="dataToPoke"/>
             <br/>
             <button class="btn btn-default" ng-click="pokeAll()">Poke all</button>

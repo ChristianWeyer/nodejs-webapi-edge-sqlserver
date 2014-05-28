@@ -1,5 +1,4 @@
-﻿@using System.Web.Optimization
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html ng-app="myApp">
 <head>
     <meta charset="utf-8">
@@ -16,7 +15,8 @@
         }
     </style>
 
-    @Styles.Render("~/app/css")
+    {{bundler.renderStyles("~/libsCss")}}
+    {{bundler.renderStyles("~/appCss")}}
 </head>
 <body>
     <div id="wrapper">
@@ -26,6 +26,7 @@
         </div>
     </div>
 
-    @Scripts.Render("~/app/js")
+    {{bundler.renderScripts("~/libsJs")}}
+    {{bundler.renderScripts("~/appJs")}}
 </body>
 </html>

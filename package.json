@@ -5,13 +5,15 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.2.1",
+    "consolidate": "^0.10.0",
     "cors": "^2.3.1",
     "edge": "^0.9.0",
     "edge-sql": "^0.1.1",
     "express": "^4.3.1",
     "node-oauth2-server": "^2.1.0",
     "q": "^1.0.1",
-    "underscore": "^1.6.0"
+    "underscore": "^1.6.0",
+    "walrus": "^0.10.1"
   },
   "devDependencies": {},
   "scripts": {

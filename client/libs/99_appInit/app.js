@@ -1,4 +1,4 @@
-﻿var myApp = angular.module("myApp", ["ngRoute", "angular-loading-bar"]);
+﻿var myApp = angular.module("myApp", ["ngRoute", "angular-loading-bar", "ttBase"]);
 
 myApp.config(function ($routeProvider) {
     $routeProvider

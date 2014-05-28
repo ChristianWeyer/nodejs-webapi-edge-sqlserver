@@ -10,7 +10,7 @@ var repository = function () {
 
             edge.func("sql", {
                 connectionString: connectionString,
-                source: "select top 10 id, name from articles"
+                source: "select top 100 id, name from articles"
             })(null, function (error, result) {
                 if (error) {
                     deferred.reject(error);

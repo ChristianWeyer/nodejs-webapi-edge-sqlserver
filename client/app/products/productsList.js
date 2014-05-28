@@ -1,4 +1,4 @@
-﻿myApp.controller("productsListController", function($scope, productsService, $location) {
+﻿myApp.controller("productsListController", function($scope, productsService, $location, $rootScope) {
     productsService.listProducts().then(function(result) {
         $scope.products = result.data;
     }, function(error) {
@@ -9,7 +9,7 @@
         $location.path("/product/" + product.id);
     };
 
-    $scope.pokeAll = function() {
-        productsService.pokeAll($scope.dataToPoke);
-    };
+    $rootScope.$on("searchTextChanged", function(evt, searchText) {
+        $scope.searchText = searchText;
+    });
 });

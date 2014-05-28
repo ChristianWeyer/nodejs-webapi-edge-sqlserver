@@ -13,16 +13,16 @@
                                 <span>{{ product.id }}</span>
                             </div>
                             <div class="form-group">
-                                <label>Title</label>
-                                <input class="form-control" placeholder="short title" ng-model="product.name">
+                                <label>Title:</label>
+                                <input class="form-control" placeholder="product name" readonly ng-model="product.name">
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
-                                <input class="form-control" placeholder="detailed description of the product" ng-model="product.description">
+                                <label>Number:</label>
+                                <input class="form-control" placeholder="product number" readonly ng-model="product.productNumber">
                             </div>
                             <div class="form-group">
-                                <label>Amount</label>
-                                <input class="form-control" placeholder="amount of items" ng-model="product.code">
+                                <label>Price:</label>
+                                <input class="form-control" placeholder="list price" readonly ng-model="product.listPrice">
                             </div>
 
                             <a class="btn btn-success" href="/">OK</a>

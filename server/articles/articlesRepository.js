@@ -2,7 +2,7 @@ var edge = require("edge"),
     q = require("q");
 
 var repository = function () {
-    var connectionString = "server=.;database=productsdemo;integrated security=true";
+    var connectionString = "server=.;database=adventureworkslt2012;integrated security=true";
 
     return{
         listArticles: function () {
@@ -10,7 +10,7 @@ var repository = function () {
 
             edge.func("sql", {
                 connectionString: connectionString,
-                source: "select top 100 id, name from articles"
+                source: "select productId, name from saleslt.product"
             })(null, function (error, result) {
                 if (error) {
                     deferred.reject(error);
@@ -26,7 +26,7 @@ var repository = function () {
 
             edge.func("sql", {
                 connectionString: connectionString,
-                source: "select id, name, code, description, imageUrl from articles where id = convert(uniqueidentifier, @id)"
+                source: "select productId, name, productNumber, listPrice from saleslt.product where productId = @id"
             })({ id: id }, function (error, result) {
                 if (error) {
                     deferred.reject(error);

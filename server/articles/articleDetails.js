@@ -1,9 +1,8 @@
-var ArticleDetails = function(id, name, code, description, imageUrl) {
+var ArticleDetails = function(id, name, productNumber, listPrice) {
     this.id = id;
     this.name = name;
-    this.code = code;
-    this.description = description;
-    this.imageUrl = imageUrl;
+    this.productNumber = productNumber;
+    this.listPrice = listPrice;
 };
 
 module.exports = ArticleDetails;

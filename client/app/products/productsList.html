@@ -15,7 +15,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="p in products" ng-click="loadDetails(p)">
+                            <tr ng-repeat="p in products | filter:searchText" ng-click="loadDetails(p)">
                                 <td>{{ p.name }}</td>
                             </tr>
                         </tbody>

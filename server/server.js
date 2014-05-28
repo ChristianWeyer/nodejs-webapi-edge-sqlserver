@@ -12,7 +12,7 @@ var articles = require("./articles/articlesApi");
 server.use("/api/articles", articles);
 
 var sslOptions = {
-    key: fs.readFileSync("./setup/key.pem"),
-    cert: fs.readFileSync("./setup/cert.pem")
+    key: fs.readFileSync("./server/setup/key.pem"),
+    cert: fs.readFileSync("./server/setup/cert.pem")
 };
 https.createServer(sslOptions, server).listen(3000);

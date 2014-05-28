@@ -15,8 +15,7 @@
         }
     </style>
 
-    {{bundler.renderStyles("~/libsCss")}}
-    {{bundler.renderStyles("~/appCss")}}
+    {{bundler.renderStyles("~/css")}}
 </head>
 <body>
     <div id="wrapper">
@@ -26,7 +25,6 @@
         </div>
     </div>
 
-    {{bundler.renderScripts("~/libsJs")}}
-    {{bundler.renderScripts("~/appJs")}}
+    {{bundler.renderScripts("~/js")}}
 </body>
 </html>

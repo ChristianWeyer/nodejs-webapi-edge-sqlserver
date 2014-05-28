@@ -4,6 +4,6 @@
     productsService.loadProductDetails(id).then(function (result) {
         $scope.product = result.data;
     }, function (error) {
-        alert(JSON.stringify(error));
+        //alert(JSON.stringify(error));
     });
 });

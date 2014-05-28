@@ -17,7 +17,6 @@ server.engine("walrus", consolidate.walrus);
 server.set("views", appDir + '/client/app');
 server.set("view engine", "walrus");
 server.use(express.static(appDir + "/client"));
-//server.use(express.errorHandler());
 
 bundleConfig.initializeBundles(appDir);
 

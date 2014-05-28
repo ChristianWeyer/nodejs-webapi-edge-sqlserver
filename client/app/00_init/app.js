@@ -2,9 +2,9 @@
 
 myApp.config(function ($routeProvider) {
     $routeProvider
-        .when("/", { templateUrl: "app/products/products.html", controller: "productsListController" })
-        .when("/products", { templateUrl: "app/products/products.html", controller: "productsListController" })
-        .when("/product/:id", { templateUrl: "app/products/product.html", controller: "productDetailsController" })
+        .when("/", { templateUrl: "app/products/productsList.html", controller: "productsListController" })
+        .when("/products", { templateUrl: "app/products/productsList.html", controller: "productsListController" })
+        .when("/product/:id", { templateUrl: "app/products/productDetails.html", controller: "productDetailsController" })
         .when("/login", { templateUrl: "app/login/login.html", controller: "loginController" })
         .otherwise({ redirectTo: "/" });
 });

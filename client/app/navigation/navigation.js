@@ -5,7 +5,7 @@
 myApp.directive("ttNavbar", function () {
     return {
         restrict: "EA",
-        templateUrl: "app/navigation/nav.html",
+        templateUrl: "app/navigation/navigation.html",
         controller: "navbarController"
     };
 });

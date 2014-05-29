@@ -7,6 +7,7 @@ var server = express();
 server.oauth = oAuthServer({
     model: inMemoryStore,
     grants: ["password"],
+    accessTokenLifetime: 86400,
     debug: true
 });
 

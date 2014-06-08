@@ -2,7 +2,7 @@ var edge = require("edge"),
     q = require("q");
 
 var repository = function () {
-    var connectionString = "server=.;database=adventureworkslt2012;integrated security=true";
+    var connectionString = "server=windows8vm.local;database=adventureworkslt2012;integrated security=true";
 
     return{
         listArticles: function () {

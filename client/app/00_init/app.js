@@ -16,4 +16,6 @@ myApp.run(function ($rootScope, tokenAuthentication, $location) {
     $rootScope.$on(tokenAuthentication.events.reauthenticationRequired, function() {
         $location.path("/login");
     });
+
+    tokenAuthentication.checkForValidToken();
 });

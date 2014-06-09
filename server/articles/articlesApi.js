@@ -12,7 +12,7 @@ var router = express.Router();
 router.get("/", function (req, res) {
     articlesRepository.listArticles().then(
         function (articles) {
-            dataMapper.mapCollection(articles, dataMapper.mapArticle, function(dataCollection){
+            dataMapper.mapCollection(articles, dataMapper.mapArticle, function (dataCollection) {
                 res.json(dataCollection);
             });
         }, function (error) {
@@ -23,13 +23,16 @@ router.get("/", function (req, res) {
 router.get("/:id", function (req, res) {
     articlesRepository.getArticleDetails(req.params.id).then(
         function (articleDetails) {
-            dataMapper.mapArticleDetails(articleDetails, function(data){
+            dataMapper.mapArticleDetails(articleDetails, function (data) {
                 res.json(data);
             });
         }, function (error) {
-            throw error;
+            if(error.reason === "notfound"){
+                res.status(404);
+            } else {
+                throw error;
+            }
         });
 });
 
 module.exports = router;
-

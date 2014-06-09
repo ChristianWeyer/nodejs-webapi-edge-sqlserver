@@ -17,6 +17,7 @@ server.engine("walrus", consolidate.walrus);
 server.set("views", appDir + "/client/app");
 server.set("view engine", "walrus");
 server.use(express.static(appDir + "/client"));
+server.use(errorHandler);
 
 bundleConfig.initializeBundles(appDir);
 
@@ -36,3 +37,8 @@ var sslOptions = {
 };
 
 https.createServer(sslOptions, server).listen(3000);
+
+function errorHandler(err, req, res, next) {
+    res.status(500);
+    res.render('error', { error: err });
+}

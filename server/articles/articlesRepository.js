@@ -1,22 +1,27 @@
-var edge = require("edge"),
+var sql     = require('mssql'),
     q = require("q");
 
 var repository = function () {
-    var connectionString = "server=windows8vm.local;database=adventureworkslt2012;integrated security=true";
+    var config = {
+        server: "windows8vm.local",
+        database: "adventureworkslt2012",
+        user:     "nodeuser",
+        password: "resuedon"
+    };
 
     return{
         listArticles: function () {
             var deferred = q.defer();
 
-            edge.func("sql", {
-                connectionString: connectionString,
-                source: "select productId, name from saleslt.product"
-            })(null, function (error, result) {
-                if (error) {
-                    deferred.reject(error);
-                } else {
-                    deferred.resolve(result);
-                }
+            sql.connect(config, function(err) {
+                var request = new sql.Request();
+                request.query("select productId, name from saleslt.product", function(error, result) {
+                    if (error) {
+                        deferred.reject(error);
+                    } else {
+                        deferred.resolve(result);
+                    }
+                });
             });
 
             return deferred.promise;
@@ -24,15 +29,20 @@ var repository = function () {
         getArticleDetails: function (id) {
             var deferred = q.defer();
 
-            edge.func("sql", {
-                connectionString: connectionString,
-                source: "select productId, name, productNumber, listPrice from saleslt.product where productId = @id"
-            })({ id: id }, function (error, result) {
-                if (error) {
-                    deferred.reject(error);
-                } else {
-                    deferred.resolve(result[0]);
-                }
+            sql.connect(config, function(err) {
+                var request = new sql.Request();
+                request.input("id", id);
+                request.query("select productId, name, productNumber, listPrice from saleslt.product where productId = @id", function(error, result) {
+                    if (error) {
+                        deferred.reject(error);
+                    } else {
+                        if(result.length === 0) {
+                            deferred.reject({ reason: "notfound" });
+                        }else{
+                            deferred.resolve(result[0]);
+                        }
+                    }
+                });
             });
 
             return deferred.promise;

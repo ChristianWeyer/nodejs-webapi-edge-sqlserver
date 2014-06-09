@@ -7,6 +7,7 @@
     };
 
     /**
+     * @param $rootScope
      * @param $injector
      * @param $q
      * @param $http
@@ -77,8 +78,6 @@
             var token = JSON.parse(store.getItem(key));
             return $q.when(token);
         }
-
-        this.checkForValidToken();
     };
 
 

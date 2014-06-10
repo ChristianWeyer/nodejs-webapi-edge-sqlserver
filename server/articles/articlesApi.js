@@ -28,7 +28,7 @@ router.get("/:id", function (req, res) {
             });
         }, function (error) {
             if(error.reason === "notfound"){
-                res.status(404);
+                res.send(404, { error: "Article not found." });
             } else {
                 throw error;
             }

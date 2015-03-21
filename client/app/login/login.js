@@ -1,4 +1,4 @@
-myApp.controller("loginController", function ($scope, tokenAuthentication) {
+app.controller("loginController", function ($scope, tokenAuthentication) {
     $scope.user = {
         remember: true
     };

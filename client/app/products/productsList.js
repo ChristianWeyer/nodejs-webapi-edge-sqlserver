@@ -1,4 +1,4 @@
-﻿myApp.controller("productsListController", function($scope, productsService, $location, $rootScope) {
+﻿app.controller("productsListController", function($scope, productsService, $location, $rootScope) {
     productsService.listProducts().then(function(result) {
         $scope.products = result.data;
     }, function(error) {

@@ -9,36 +9,45 @@ var fs = require("fs"),
     bundleConfig = require("./server/bundling/bundleConfig.js"),
     bundler = require("./server/bundling/bundler.js");
 
-var server = express();
-
-var appDir = __dirname;
-
-server.engine("walrus", consolidate.walrus);
-server.set("views", appDir + "/client/app");
-server.set("view engine", "walrus");
-server.use(express.static(appDir + "/client"));
-server.use(errorHandler);
-
-bundleConfig.initializeBundles(appDir);
-
-server.get("/",  function (req, res) {
-    res.render("index", { bundler: bundler });
-});
-
-server.use(cors());
-server.use(oAuth2Server);
-
-var articlesApi = require("./server/articles/articlesApi");
-server.use("/api/articles", articlesApi);
+var app = require("express")();
 
 var sslOptions = {
     key: fs.readFileSync("./server/setup/key.pem"),
     cert: fs.readFileSync("./server/setup/cert.pem")
 };
 
-https.createServer(sslOptions, server).listen(3000);
+var server = https.createServer(sslOptions, app).listen(3000);
+
+var io = require("socket.io")(server);
+
+var appDir = __dirname;
+
+app.engine("walrus", consolidate.walrus);
+app.set("views", appDir + "/client/app");
+app.set("view engine", "walrus");
+app.use(express.static(appDir + "/client"));
+app.use(errorHandler);
+
+bundleConfig.initializeBundles(appDir);
+
+app.get("/", function (req, res) {
+    res.render("index", {bundler: bundler});
+});
+
+app.use(cors());
+app.use(oAuth2Server);
+
+var articlesApi = require("./server/articles/articlesApi");
+app.use("/api/articles", articlesApi);
+
+io.on("connection", function (socket) {
+    socket.on("productLoaded", function (msg) {
+        console.log("Product loaded: " + msg);
+        io.emit("productLoaded", msg);
+    });
+});
 
 function errorHandler(err, req, res, next) {
     res.status(500);
-    res.render('error', { error: err });
+    res.render("error", {error: err});
 }

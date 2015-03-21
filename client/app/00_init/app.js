@@ -1,6 +1,6 @@
-﻿var myApp = angular.module("myApp", ["ngRoute", "angular-loading-bar", "ttBase"]);
+﻿var app = angular.module("app", ["ngRoute", "angular-loading-bar", "ttBase"]);
 
-myApp.config(function ($routeProvider) {
+app.config(function ($routeProvider) {
     $routeProvider
         .when("/", { templateUrl: "app/products/productsList.html", controller: "productsListController" })
         .when("/products", { templateUrl: "app/products/productsList.html", controller: "productsListController" })
@@ -9,7 +9,7 @@ myApp.config(function ($routeProvider) {
         .otherwise({ redirectTo: "/" });
 });
 
-myApp.run(function ($rootScope, tokenAuthentication, $location) {
+app.run(function ($rootScope, tokenAuthentication, $location) {
     $rootScope.$on(tokenAuthentication.events.authenticated, function() {
         $location.path("/");
     });

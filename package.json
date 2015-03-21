@@ -13,6 +13,7 @@
     "mssql": "^0.5.3",
     "node-oauth2-server": "^2.1.0",
     "q": "^1.0.1",
+    "socket.io": "^1.3.5",
     "tedious": "^0.2.3",
     "underscore": "^1.6.0",
     "walrus": "^0.10.1"
@@ -27,7 +28,7 @@
     "url": "https://github.com/ChristianWeyer/nodejs-webapi-edge-sqlserver"
   },
   "author": "Christian Weyer",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ChristianWeyer/nodejs-webapi-edge-sqlserver/issues"
   },

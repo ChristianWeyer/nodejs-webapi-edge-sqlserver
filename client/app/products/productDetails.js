@@ -1,4 +1,4 @@
-﻿myApp.controller("productDetailsController", function($scope, productsService, $location, $routeParams) {
+﻿app.controller("productDetailsController", function($scope, productsService, $location, $routeParams) {
     var id = $routeParams.id;
 
     productsService.loadProductDetails(id).then(function (result) {

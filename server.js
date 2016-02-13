@@ -43,7 +43,7 @@ app.use("/api/articles", articlesApi);
 io.on("connection", function (socket) {
     socket.on("productLoaded", function (msg) {
         console.log("Product loaded: " + msg);
-        io.emit("productLoaded", msg);
+        io.emit("productLoaded", { productId: msg, clientConnectionId: this.id });
     });
 });
 

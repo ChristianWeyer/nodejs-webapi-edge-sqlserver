@@ -1,4 +1,4 @@
-var sql     = require('mssql'),
+var sql = require('mssql'),
     q = require("q");
 
 var repository = function () {
